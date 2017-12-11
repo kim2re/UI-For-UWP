@@ -125,6 +125,10 @@
     <Compile Include="Data\Engine\EntityProviders\PropertyIteratorMode.cs" />
     <Compile Include="Data\Engine\EntityProviders\RuntimeEntityProvider.cs" />
     <Compile Include="Data\Engine\EntityProviders\RuntimeEntityProperty.cs" />
+    <Compile Include="Data\Engine\Fields\Descriptions\DynamicDictionaryFieldInfo.cs" />
+    <Compile Include="Data\Engine\Fields\Descriptions\TypedDictionaryFieldInfo.cs" />
+    <Compile Include="Data\Engine\Fields\Providers\DynamicDictionaryFieldInfoDescriptionsProvider.cs" />
+    <Compile Include="Data\Engine\Fields\Providers\TypedDictionaryFieldDescriptionsInfoProvider.cs" />
     <Compile Include="Data\Engine\Groups\Descriptions\CollectionViewGroupDescription.cs" />
     <Compile Include="Data\Engine\IncrementalLoading\PlaceholderInfoType.cs" />
     <Compile Include="Data\Engine\DataProviders\ViewChangingEventArgs.cs" />

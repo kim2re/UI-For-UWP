@@ -95,6 +95,17 @@ namespace Telerik.Data.Core.Fields
                 return new DynamicObjectFieldInfoDescriptionsProvider(dynamicObject);
             }
 
+            var typePropInfo = items.GetType().GetProperty("PropertyInfos");
+            if (typePropInfo?.GetValue(items) is IDictionary<string, Type> propertyInfos) 
+            {
+                return new TypedDictionaryFieldDescriptionsInfoProvider(propertyInfos);
+            }
+
+            if (firstItem is IDictionary<string, object> dictionary) 
+            {
+                return new DynamicDictionaryFieldInfoDescriptionsProvider(dictionary);
+            }
+
             var type = items.GetType().GetTypeInfo();
             var argumentType = type.GenericTypeArguments.LastOrDefault();
 
@@ -108,6 +119,10 @@ namespace Telerik.Data.Core.Fields
                 else if (typeof(ExpandoObject).GetTypeInfo().IsAssignableFrom(argumentTypeInfo))
                 {
                     return new ExpandoObjectFieldDescriptionsInfoProvider(null);
+                }
+                else if (typeof(IDictionary<string, object>).GetTypeInfo().IsAssignableFrom(argumentTypeInfo)) 
+                {
+                    return new DynamicDictionaryFieldInfoDescriptionsProvider(null);
                 }
             }
 
